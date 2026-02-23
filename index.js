@@ -88,16 +88,16 @@ function toggleChange(id) {
   document.getElementById("buttonId").classList.add("space-x-3");
 
   // for added the class
-  allFilterBtn.classList.add("border-info");
-  interviewFilterBtn.classList.add("border-info");
-  rejectFilterBtn.classList.add("border-info");
+  allFilterBtn.classList.add("border-base-300");
+  interviewFilterBtn.classList.add("border-base-300");
+  rejectFilterBtn.classList.add("border-base-300");
 
   //for remove the class
-  allFilterBtn.classList.remove("btn-info");
-  interviewFilterBtn.classList.remove("btn-info");
-  rejectFilterBtn.classList.remove("btn-info");
+  allFilterBtn.classList.remove("btn-info", "text-white");
+  interviewFilterBtn.classList.remove("btn-info", "text-white");
+  rejectFilterBtn.classList.remove("btn-info", "text-white");
 
   const selectedBtn = document.getElementById(id);
-  selectedBtn.classList.remove("border-info");
-  selectedBtn.classList.add("btn-info");
+  selectedBtn.classList.remove("border-base-300");
+  selectedBtn.classList.add("btn-info", "text-white");
 }
