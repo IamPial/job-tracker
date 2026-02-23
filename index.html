@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Daisy UI & Tailwind Css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        font-family: "Geist", sans-serif;
+      }
+    </style>
+    <title>Job Application Tracker</title>
+  </head>
+  <body>
+    <header class="w-8/12 mx-auto">
+      <h2 class="text-3xl font-extrabold text-slate-900 py-5">
+        Job Application Tracker
+      </h2>
+      <div class="display-count grid grid-cols-3 gap-2 mb-2">
+        <div
+          class="total border border-orange-300 p-5 rounded-xl hover:border-neutral transition-all duration-300 hover:scale-95 cursor-pointer"
+        >
+          <h2 class="text-neutral text-xl">Total</h2>
+          <h2 id="display-total" class="text-neutral font-bold text-4xl">0</h2>
+        </div>
+        <div
+          class="interview border border-orange-300 p-5 rounded-xl hover:border-success transition-all duration-300 hover:scale-95 cursor-pointer"
+        >
+          <h2 class="text-neutral text-xl">Interview</h2>
+          <h2 id="display-interview" class="text-success font-bold text-4xl">
+            0
+          </h2>
+        </div>
+        <div
+          class="reject border border-orange-300 p-5 rounded-xl hover:border-error transition-all duration-300 hover:scale-95 cursor-pointer"
+        >
+          <h2 class="text-neutral text-xl">Rejected</h2>
+          <h2 id="display-reject" class="text-error font-bold text-4xl">0</h2>
+        </div>
+      </div>
+      <div class="border w-full border-gray-200/70 my-5"></div>
+    </header>
+
+    <!-- main content start -->
+    <main>
+      <!-- filter-button start -->
+      <section class="w-8/12 mx-auto mb-5 space-x-2">
+        <button class="btn btn-soft btn-info">All</button>
+        <button class="btn btn-soft btn-info">Interview</button>
+        <button class="btn btn-soft btn-info">Reject</button>
+      </section>
+      <!-- filter-button end -->
+
+      <!-- card content start -->
+      <section class="w-8/12 mx-auto space-y-3">
+        <!-- card 1 start -->
+        <div
+          class="card bg-base-300 max-w-full mx-2 flex flex-row justify-between"
+        >
+          <div class="card-body">
+            <h2 class="card-title text-gray-800 text-2xl font-bold">
+              DataViz Solutions
+            </h2>
+            <h4 class="text-[#64748B] text-[16px]">
+              Data Visualization Specialist
+            </h4>
+            <p class="text-[#64748B] text-[16px]">
+              Boston, MA. Full-time. 125,000 - $165,000
+            </p>
+            <span
+              id="not-applied-status"
+              class="badge badge-outline badge-primary bg-primary/10"
+              >NOT APPLIED</span
+            >
+            <span
+              id="applied-status"
+              class="badge badge-outline badge-success bg-success/10 hidden"
+              >INTERVIEW</span
+            >
+            <span
+              id="reject-status"
+              class="hidden badge badge-outline badge-error bg-error/10"
+              >REJECTED</span
+            >
+            <p class="text-[#323B49] text-[16px]">
+              Transform complex data into compelling visualizations. Required
+              skills: D3.js, React, and strong analytical thinking.
+            </p>
+            <div class="card-actions">
+              <button
+                id="interview-btn"
+                class="btn border-success bg-success/50"
+              >
+                INTERVIEW
+              </button>
+              <button id="reject-btn" class="btn border-error bg-error/50">
+                REJECT
+              </button>
+            </div>
+          </div>
+          <div class="delete-icon mt-5 p-5">
+            <button
+              class="btn h-10 w-10 btn-error bg-error/50 transition-all duration-200 active:scale-90 rounded-full"
+            >
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+        <!-- card 1 end -->
+        <!-- card 2 start -->
+        <div
+          class="card bg-base-300 max-w-full mx-2 flex flex-row justify-between"
+        >
+          <div class="card-body">
+            <h2 class="card-title text-gray-800 text-2xl font-bold">
+              DataViz Solutions
+            </h2>
+            <h4 class="text-[#64748B] text-[16px]">
+              Data Visualization Specialist
+            </h4>
+            <p class="text-[#64748B] text-[16px]">
+              Boston, MA. Full-time. 125,000 - $165,000
+            </p>
+            <span
+              id="not-applied-status"
+              class="badge badge-outline badge-primary bg-primary/10"
+              >NOT APPLIED</span
+            >
+            <span
+              id="applied-status"
+              class="badge badge-outline badge-success bg-success/10 hidden"
+              >INTERVIEW</span
+            >
+            <span
+              id="reject-status"
+              class="hidden badge badge-outline badge-error bg-error/10"
+              >REJECTED</span
+            >
+            <p class="text-[#323B49] text-[16px]">
+              Transform complex data into compelling visualizations. Required
+              skills: D3.js, React, and strong analytical thinking.
+            </p>
+            <div class="card-actions">
+              <button
+                id="interview-btn"
+                class="btn border-success bg-success/50"
+              >
+                INTERVIEW
+              </button>
+              <button id="reject-btn" class="btn border-error bg-error/50">
+                REJECT
+              </button>
+            </div>
+          </div>
+          <div class="delete-icon mt-5 p-5">
+            <button
+              class="btn h-10 w-10 btn-error bg-error/50 transition-all duration-200 active:scale-90 rounded-full"
+            >
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+        <!-- card 2 end -->
+
+        <!-- card 3 start -->
+        <div
+          class="card bg-base-300 max-w-full mx-2 flex flex-row justify-between"
+        >
+          <div class="card-body">
+            <h2 class="card-title text-gray-800 text-2xl font-bold">
+              DataViz Solutions
+            </h2>
+            <h4 class="text-[#64748B] text-[16px]">
+              Data Visualization Specialist
+            </h4>
+            <p class="text-[#64748B] text-[16px]">
+              Boston, MA. Full-time. 125,000 - $165,000
+            </p>
+            <span
+              id="not-applied-status"
+              class="badge badge-outline badge-primary bg-primary/10"
+              >NOT APPLIED</span
+            >
+            <span
+              id="applied-status"
+              class="badge badge-outline badge-success bg-success/10 hidden"
+              >INTERVIEW</span
+            >
+            <span
+              id="reject-status"
+              class="hidden badge badge-outline badge-error bg-error/10"
+              >REJECTED</span
+            >
+            <p class="text-[#323B49] text-[16px]">
+              Transform complex data into compelling visualizations. Required
+              skills: D3.js, React, and strong analytical thinking.
+            </p>
+            <div class="card-actions">
+              <button
+                id="interview-btn"
+                class="btn border-success bg-success/50"
+              >
+                INTERVIEW
+              </button>
+              <button id="reject-btn" class="btn border-error bg-error/50">
+                REJECT
+              </button>
+            </div>
+          </div>
+          <div class="delete-icon mt-5 p-5">
+            <button
+              class="btn h-10 w-10 btn-error bg-error/50 transition-all duration-200 active:scale-90 rounded-full"
+            >
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+        <!-- card 3 end -->
+      </section>
+      <!-- card content end -->
+    </main>
+    <!-- main content end-->
+    <script src="./index.js"></script>
+  </body>
+</html>
