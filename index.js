@@ -65,10 +65,14 @@ let rejectList = [];
 const totalCount = document.getElementById("display-total");
 const interviewCount = document.getElementById("display-interview");
 const rejectCount = document.getElementById("display-reject");
-const allSectionCards = document.getElementById("allCards");
 
+const allSectionCards = document.getElementById("allCards");
 const mainContainer = document.querySelector("main");
-console.log(mainContainer);
+
+// for toggling all necessary buttons
+const allFilterBtn = document.getElementById("allFilterBtn");
+const interviewFilterBtn = document.getElementById("interviewFilterBtn");
+const rejectFilterBtn = document.getElementById("rejectFilterBtn");
 
 //create function for displaying counting value
 function countDisplay() {
