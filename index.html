@@ -69,14 +69,18 @@
     <main>
       <!-- filter-button start -->
       <section class="w-8/12 mx-auto mb-5 space-x-2">
-        <button class="btn btn-soft btn-info">All</button>
-        <button class="btn btn-soft btn-info">Interview</button>
-        <button class="btn btn-soft btn-info">Reject</button>
+        <button id="allFilterBtn" class="btn btn-soft btn-info">All</button>
+        <button id="interviewFilterBtn" class="btn btn-soft btn-info">
+          Interview
+        </button>
+        <button id="rejectFilterBtn" class="btn btn-soft btn-info">
+          Reject
+        </button>
       </section>
       <!-- filter-button end -->
 
       <!-- card content start -->
-      <section class="w-8/12 mx-auto space-y-3">
+      <section id="allCards" class="w-8/12 mx-auto space-y-3">
         <!-- card 1 start -->
         <div
           class="card bg-base-300 max-w-full mx-2 flex flex-row justify-between"
