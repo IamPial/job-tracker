@@ -84,5 +84,20 @@ countDisplay();
 
 // for toggle the click event in multiple filter button
 function toggleChange(id) {
-  console.log("click", id);
+  // added  x-axis space to this every buttons
+  document.getElementById("buttonId").classList.add("space-x-3");
+
+  // for added the class
+  allFilterBtn.classList.add("border-info");
+  interviewFilterBtn.classList.add("border-info");
+  rejectFilterBtn.classList.add("border-info");
+
+  //for remove the class
+  allFilterBtn.classList.remove("btn-info");
+  interviewFilterBtn.classList.remove("btn-info");
+  rejectFilterBtn.classList.remove("btn-info");
+
+  const selectedBtn = document.getElementById(id);
+  selectedBtn.classList.remove("border-info");
+  selectedBtn.classList.add("btn-info");
 }
