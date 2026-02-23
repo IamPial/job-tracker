@@ -61,14 +61,24 @@ const jobs = [
 let interviewList = [];
 let rejectList = [];
 
+//finding all necessary elements
 const totalCount = document.getElementById("display-total");
 const interviewCount = document.getElementById("display-interview");
 const rejectCount = document.getElementById("display-reject");
 const allSectionCards = document.getElementById("allCards");
 
+const mainContainer = document.querySelector("main");
+console.log(mainContainer);
+
+//create function for displaying counting value
 function countDisplay() {
   totalCount.innerText = allSectionCards.children.length;
   interviewCount.innerText = interviewList.length;
   rejectCount.innerText = rejectList.length;
 }
 countDisplay();
+
+// for toggle the click event in multiple filter button
+function toggleChange(id) {
+  console.log("click", id);
+}
