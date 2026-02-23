@@ -57,3 +57,18 @@ const jobs = [
     },
   },
 ];
+
+let interviewList = [];
+let rejectList = [];
+
+const totalCount = document.getElementById("display-total");
+const interviewCount = document.getElementById("display-interview");
+const rejectCount = document.getElementById("display-reject");
+const allSectionCards = document.getElementById("allCards");
+
+function countDisplay() {
+  totalCount.innerText = allSectionCards.children.length;
+  interviewCount.innerText = interviewList.length;
+  rejectCount.innerText = rejectList.length;
+}
+countDisplay();
