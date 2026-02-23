@@ -69,11 +69,25 @@
     <main>
       <!-- filter-button start -->
       <section class="w-8/12 mx-auto mb-5 space-x-2">
-        <button id="allFilterBtn" class="btn btn-soft btn-info">All</button>
-        <button id="interviewFilterBtn" class="btn btn-soft btn-info">
+        <button
+          onclick="toggleChange('allFilterBtn')"
+          id="allFilterBtn"
+          class="btn btn-soft btn-info"
+        >
+          All
+        </button>
+        <button
+          onclick="toggleChange('interviewFilterBtn')"
+          id="interviewFilterBtn"
+          class="btn btn-soft btn-info"
+        >
           Interview
         </button>
-        <button id="rejectFilterBtn" class="btn btn-soft btn-info">
+        <button
+          onclick="toggleChange('rejectFilterBtn')"
+          id="rejectFilterBtn"
+          class="btn btn-soft btn-info"
+        >
           Reject
         </button>
       </section>
@@ -135,6 +149,7 @@
           </div>
         </div>
         <!-- card 1 end -->
+
         <!-- card 2 start -->
         <div
           class="card bg-base-300 max-w-full mx-2 flex flex-row justify-between"
