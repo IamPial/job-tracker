@@ -60,6 +60,7 @@ const jobs = [
 
 let interviewList = [];
 let rejectList = [];
+let currentStatus = "all";
 
 //finding all necessary elements
 const totalCount = document.getElementById("display-total");
@@ -98,6 +99,7 @@ function toggleChange(id) {
   interviewFilterBtn.classList.remove("btn-info", "text-white");
   rejectFilterBtn.classList.remove("btn-info", "text-white");
 
+  currentStatus = id;
   const selectedBtn = document.getElementById(id);
   selectedBtn.classList.remove("border-base-300");
   selectedBtn.classList.add("btn-info", "text-white");
@@ -110,11 +112,13 @@ function toggleChange(id) {
   if (id == "interviewFilterBtn") {
     allSectionCards.classList.add("hidden");
     filterSectionCards.classList.remove("hidden");
+    interviewSection();
   }
 
   if (id == "rejectFilterBtn") {
     allSectionCards.classList.add("hidden");
     filterSectionCards.classList.remove("hidden");
+    rejectSection();
   }
 }
 
@@ -157,7 +161,10 @@ mainContainer.addEventListener("click", function (e) {
       (item) => item.companyName != jobInfo.companyName,
     );
 
-    interviewSection();
+    if (currentStatus == "rejectFilterBtn") {
+      rejectSection();
+    }
+
     countDisplay();
   }
 
@@ -196,7 +203,9 @@ mainContainer.addEventListener("click", function (e) {
       (item) => item.companyName != jobInfo.companyName,
     );
 
-    rejectSection();
+    if (currentStatus == "interviewFilterBtn") {
+      interviewSection();
+    }
     countDisplay();
   }
 });
@@ -221,7 +230,7 @@ function interviewSection() {
               <span class="salary">${interview.salary}</span>
             </div>
             <p
-              class="my-status badge badge-outline badge-primary bg-primary/10"
+              class="my-status badge badge-outline badge-success bg-success/10"
             >
               ${interview.status}
             </p>
@@ -275,7 +284,7 @@ function rejectSection() {
               <span class="salary">${reject.salary}</span>
             </div>
             <p
-              class="my-status badge badge-outline badge-primary bg-primary/10"
+              class="my-status badge badge-outline badge-error bg-error/10"
             >
               ${reject.status}
             </p>
