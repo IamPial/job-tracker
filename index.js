@@ -101,3 +101,28 @@ function toggleChange(id) {
   selectedBtn.classList.remove("border-base-300");
   selectedBtn.classList.add("btn-info", "text-white");
 }
+
+// Executing Main Content
+
+mainContainer.addEventListener("click", function (e) {
+  const parentNode = e.target.parentNode.parentNode;
+
+  const companyName = parentNode.querySelector(".companyName").innerText;
+  const position = parentNode.querySelector(".position").innerText;
+  const location = parentNode.querySelector(".location").innerText;
+  const type = parentNode.querySelector(".type").innerText;
+  const salary = parentNode.querySelector(".salary").innerText;
+  const description = parentNode.querySelector(".description").innerText;
+  const status = parentNode.querySelector(".my-status").innerText;
+
+  const jobInfo = {
+    companyName,
+    position,
+    location,
+    type,
+    salary,
+    description,
+    status,
+  };
+  console.log(jobInfo);
+});
