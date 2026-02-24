@@ -125,7 +125,10 @@ mainContainer.addEventListener("click", function (e) {
     const salary = parentNode.querySelector(".salary").innerText;
     const description = parentNode.querySelector(".description").innerText;
     const status = parentNode.querySelector(".my-status").innerText;
-
+    parentNode.querySelector(".my-status").innerText =
+      "interview".toUpperCase();
+    parentNode.querySelector(".my-status").className =
+      "badge badge-outline badge-success bg-success/10";
     const jobInfo = {
       companyName,
       position,
@@ -133,13 +136,9 @@ mainContainer.addEventListener("click", function (e) {
       type,
       salary,
       description,
-      status,
+      status: "interview".toUpperCase(),
     };
 
-    parentNode.querySelector(".my-status").innerText =
-      "interview".toUpperCase();
-    parentNode.querySelector(".my-status").className =
-      "badge badge-outline badge-success bg-success/10";
     const filterInterview = interviewList.find(
       (item) => item.companyName == jobInfo.companyName,
     );
@@ -148,6 +147,7 @@ mainContainer.addEventListener("click", function (e) {
     }
     interviewSection();
   }
+  countDisplay();
 });
 
 //for render of interview list
@@ -159,24 +159,77 @@ function interviewSection() {
     div.innerHTML = `
         <div class="card-body">
             <h2 class="companyName card-title text-gray-800 text-2xl font-bold">
-              DataViz Solutions 3
+              ${interview.companyName}
             </h2>
             <h4 class="position text-[#64748B] text-[16px]">
-              Data Visualization Specialist
+              ${interview.position}
             </h4>
             <div class="text-[#64748B] text-[16px] space-x-3">
-              <span class="location">Boston, MA</span>
-              <span class="type">Full-time</span>
-              <span class="salary">125,000 - $165,000</span>
+              <span class="location">${interview.location}</span>
+              <span class="type">${interview.type}</span>
+              <span class="salary">${interview.salary}</span>
             </div>
             <p
               class="my-status badge badge-outline badge-primary bg-primary/10"
             >
-              NOT APPLIED
+              ${interview.status}
             </p>
             <p class="description text-[#323B49] text-[16px]">
-              Transform complex data into compelling visualizations. Required
-              skills: D3.js, React, and strong analytical thinking.
+              ${interview.description}
+            </p>
+            <div class="card-actions">
+              <button
+                id="interview-btn"
+                class="interview-btn btn border-success bg-success/50"
+              >
+                INTERVIEW
+              </button>
+              <button
+                id="reject-btn"
+                class="reject-btn btn border-error bg-error/50"
+              >
+                REJECT
+              </button>
+            </div>
+          </div>
+          <div class="delete-icon mt-5 p-5">
+            <button
+              class="btn h-10 w-10 btn-error bg-error/50 transition-all duration-200 active:scale-90 rounded-full"
+            >
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+    `;
+    filterSectionCards.appendChild(div);
+  }
+}
+
+// for render of rejection List
+function rejectionSection() {
+  filterSectionCards.innerHTML = "";
+  for (const reject of rejectList) {
+    let div = document.createElement("div");
+    div.className = "card bg-base-300 max-w-full flex flex-row justify-between";
+    div.innerHTML = `
+        <div class="card-body">
+            <h2 class="companyName card-title text-gray-800 text-2xl font-bold">
+              ${reject.companyName}
+            </h2>
+            <h4 class="position text-[#64748B] text-[16px]">
+              ${reject.position}
+            </h4>
+            <div class="text-[#64748B] text-[16px] space-x-3">
+              <span class="location">${reject.location}</span>
+              <span class="type">${reject.type}</span>
+              <span class="salary">${reject.salary}</span>
+            </div>
+            <p
+              class="my-status badge badge-outline badge-primary bg-primary/10"
+            >
+              ${reject.status}
+            </p>
+            <p class="description text-[#323B49] text-[16px]">
+              ${reject.description}
             </p>
             <div class="card-actions">
               <button
