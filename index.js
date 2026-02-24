@@ -136,6 +136,24 @@ function deleteFunc(id) {
   countDisplay();
 }
 
+function rejectDelete(id) {
+  const reject = rejectList.filter((item) => item.id != id);
+  const delCard = document.getElementById(id);
+  if (delCard) {
+    if (rejectList.length < 0) {
+      console.log(rejectList.length);
+      availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
+      emptyCardsSection.classList.add("hidden");
+    } else {
+      delCard.remove();
+      rejectCount.innerText = rejectList.pop();
+      availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
+      emptyCardsSection.classList.remove("hidden");
+    }
+  }
+  countDisplay();
+}
+
 // for toggle the click event in multiple filter button
 function toggleChange(id) {
   // added  x-axis space to this every buttons
@@ -409,7 +427,9 @@ function interviewSection() {
 function rejectSection() {
   filterSectionCards.innerHTML = "";
   for (const reject of rejectList) {
+    // console.log(reject, rejectList);
     let div = document.createElement("div");
+    div.id = `reject-${reject.companyName}`;
     div.className = "card bg-base-300 max-w-full flex flex-row justify-between";
     div.innerHTML = `
         <div class="card-body">
@@ -449,6 +469,7 @@ function rejectSection() {
           </div>
           <div class="delete-icon mt-5 p-5">
             <button
+            onclick="rejectDelete('reject-${reject.companyName}')"
               class="btn h-10 w-10 btn-error bg-error/50 transition-all duration-200 active:scale-90 rounded-full"
             >
               <i class="fa-regular fa-trash-can"></i>
