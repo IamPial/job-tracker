@@ -109,6 +109,7 @@ const allSectionCards = document.getElementById("allCards");
 const mainContainer = document.querySelector("main");
 const filterSectionCards = document.getElementById("filter-cards");
 const availAbleJobsCount = document.getElementById("available-jobs-count");
+const emptyCardsSection = document.getElementById("empty-cards");
 
 // for toggling all necessary buttons
 const allFilterBtn = document.getElementById("allFilterBtn");
@@ -139,7 +140,6 @@ function deleteFunc(id) {
 function toggleChange(id) {
   // added  x-axis space to this every buttons
   document.getElementById("buttonId").classList.add("space-x-3");
-
   // for added the class
   allFilterBtn.classList.add("border-base-300");
   interviewFilterBtn.classList.add("border-base-300");
@@ -167,6 +167,7 @@ function toggleChange(id) {
     filterSectionCards.classList.remove("hidden");
     //added available jobs
     availAbleJobsCount.innerText = `${interviewList.length} of ${allCards.length}`;
+
     interviewSection();
   }
 
@@ -175,6 +176,7 @@ function toggleChange(id) {
     filterSectionCards.classList.remove("hidden");
     //added available jobs
     availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
+
     rejectSection();
   }
 }
@@ -220,6 +222,7 @@ mainContainer.addEventListener("click", function (e) {
 
     if (currentStatus == "rejectFilterBtn") {
       availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
+
       rejectSection();
     }
 
@@ -263,6 +266,7 @@ mainContainer.addEventListener("click", function (e) {
 
     if (currentStatus == "interviewFilterBtn") {
       availAbleJobsCount.innerText = `${interviewList.length} of ${allCards.length}`;
+
       interviewSection();
     }
     countDisplay();
