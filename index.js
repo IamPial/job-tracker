@@ -136,20 +136,37 @@ function deleteFunc(id) {
   countDisplay();
 }
 
+//for interview section delete a single card
+function interviewDelete(id) {
+  const interview = interviewList.filter((item) => item.id != id);
+  const delCard = document.getElementById(id);
+  if (delCard) {
+    delCard.remove();
+    interviewCount.innerText = interviewList.pop();
+    availAbleJobsCount.innerText = `${interviewList.length} of ${allCards.length}`;
+  }
+  if (interviewList.length === 0) {
+    console.log(interviewList.length);
+    emptyCardsSection.classList.remove("hidden");
+    availAbleJobsCount.innerText = `${interviewList.length} of ${allCards.length}`;
+  }
+
+  countDisplay();
+}
+
+// For reject section a single card delete
 function rejectDelete(id) {
   const reject = rejectList.filter((item) => item.id != id);
   const delCard = document.getElementById(id);
   if (delCard) {
-    if (rejectList.length < 0) {
-      console.log(rejectList.length);
-      availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
-      emptyCardsSection.classList.add("hidden");
-    } else {
-      delCard.remove();
-      rejectCount.innerText = rejectList.pop();
-      availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
-      emptyCardsSection.classList.remove("hidden");
-    }
+    delCard.remove();
+    rejectCount.innerText = rejectList.pop();
+    availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
+  }
+  if (rejectList.length === 0) {
+    console.log(rejectList.length);
+    availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
+    emptyCardsSection.classList.remove("hidden");
   }
   countDisplay();
 }
@@ -374,6 +391,7 @@ function interviewSection() {
   filterSectionCards.innerHTML = "";
   for (const interview of interviewList) {
     let div = document.createElement("div");
+    div.id = `interview-${interview.companyName}`;
     div.className = "card bg-base-300 max-w-full flex flex-row justify-between";
     div.innerHTML = `
         <div class="card-body">
@@ -413,6 +431,7 @@ function interviewSection() {
           </div>
           <div class="delete-icon mt-5 p-5">
             <button
+            onclick="interviewDelete('interview-${interview.companyName}')"
               class="btn h-10 w-10 btn-error bg-error/50 transition-all duration-200 active:scale-90 rounded-full"
             >
               <i class="fa-regular fa-trash-can"></i>
