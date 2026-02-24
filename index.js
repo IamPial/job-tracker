@@ -183,6 +183,12 @@ function toggleChange(id) {
     //added available jobs
     availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
 
+    // added the empty-card-section for rejection section
+    if (rejectList.length == "") {
+      emptyCardsSection.classList.remove("hidden");
+    } else {
+      emptyCardsSection.classList.add("hidden");
+    }
     rejectSection();
   }
 }
