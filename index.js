@@ -68,7 +68,7 @@ const rejectCount = document.getElementById("display-reject");
 
 const allSectionCards = document.getElementById("allCards");
 const mainContainer = document.querySelector("main");
-const filterCards = document.getElementById("filter-cards");
+const filterSectionCards = document.getElementById("filter-cards");
 
 // for toggling all necessary buttons
 const allFilterBtn = document.getElementById("allFilterBtn");
@@ -142,7 +142,7 @@ mainContainer.addEventListener("click", function (e) {
 
 //for render of interview list
 function interviewSection() {
-  filterCards.innerHTML = "";
+  filterSectionCards.innerHTML = "";
   for (const interview of interviewList) {
     let div = document.createElement("div");
     div.className = "card bg-base-300 max-w-full flex flex-row justify-between";
@@ -191,6 +191,6 @@ function interviewSection() {
             </button>
           </div>
     `;
-    filterCards.appendChild(div);
+    filterSectionCards.appendChild(div);
   }
 }
