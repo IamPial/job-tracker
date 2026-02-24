@@ -36,21 +36,21 @@
     <title>Job Application Tracker</title>
   </head>
   <body>
-    <header class="w-8/12 mx-auto">
-      <h2 class="text-3xl font-extrabold text-slate-900 py-5">
+    <header class="w-xs sm:w-sm md:w-md lg:w-8/12 mx-auto">
+      <h2 class="text-2xl lg:text-3xl font-extrabold text-slate-900 py-5">
         Job Application Tracker
       </h2>
       <div class="display-count grid grid-cols-3 gap-2 mb-2">
         <div
           class="total border border-orange-300 p-5 rounded-xl hover:border-neutral transition-all duration-300 hover:scale-95 cursor-pointer"
         >
-          <h2 class="text-neutral text-xl">Total</h2>
+          <h2 class="text-neutral text-md lg:text-xl">Total</h2>
           <h2 id="display-total" class="text-neutral font-bold text-4xl">0</h2>
         </div>
         <div
           class="interview border border-orange-300 p-5 rounded-xl hover:border-success transition-all duration-300 hover:scale-95 cursor-pointer"
         >
-          <h2 class="text-neutral text-xl">Interview</h2>
+          <h2 class="text-neutral text-md lg:text-xl">Interview</h2>
           <h2 id="display-interview" class="text-success font-bold text-4xl">
             0
           </h2>
@@ -58,7 +58,7 @@
         <div
           class="reject border border-orange-300 p-5 rounded-xl hover:border-error transition-all duration-300 hover:scale-95 cursor-pointer"
         >
-          <h2 class="text-neutral text-xl">Rejected</h2>
+          <h2 class="text-neutral text-md lg:text-xl">Rejected</h2>
           <h2 id="display-reject" class="text-error font-bold text-4xl">0</h2>
         </div>
       </div>
@@ -68,11 +68,14 @@
         <span id="available-jobs-count" class="text-gray">8 Jobs</span>
       </div>
     </header>
-
+    <!-- TODO: working with the interview & reject page  -->
     <!-- main content start -->
     <main>
       <!-- filter-button start -->
-      <div id="buttonId" class="w-8/12 mx-auto mb-5 space-x-3">
+      <div
+        id="buttonId"
+        class="w-xs sm:w-sm md:w-md lg:w-8/12 mx-auto mb-5 space-x-3"
+      >
         <button
           onclick="toggleChange('allFilterBtn')"
           id="allFilterBtn"
@@ -263,8 +266,24 @@
         class="w-8/12 mx-auto space-y-3 hidden"
       ></section>
       <!-- Filter Card Content End -->
+
+      <section class="max-w-full lg:w-8/12 mx-auto">
+        <div
+          class="empty-card flex flex-col items-center justify-center py-18 space-y-3"
+        >
+          <div class="logo">
+            <img src="./assets/jobs.png" alt="" />
+          </div>
+          <h2 class="text-2xl font-semibold text-[#002C5C]">
+            No jobs available
+          </h2>
+          <p class="text-xs md:text-[16px] lg:text-[16px] text-[#64748B]">
+            Check back soon for new job opportunities
+          </p>
+        </div>
+      </section>
     </main>
     <!-- main content end-->
-    <script src="./index.js"></script>
+    <!-- <script src="./index.js"></script> -->
   </body>
 </html>
