@@ -167,6 +167,12 @@ function toggleChange(id) {
     filterSectionCards.classList.remove("hidden");
     //added available jobs
     availAbleJobsCount.innerText = `${interviewList.length} of ${allCards.length}`;
+    // added the empty-card-section for interview section
+    if (interviewList.length == "") {
+      emptyCardsSection.classList.remove("hidden");
+    } else {
+      emptyCardsSection.classList.add("hidden");
+    }
 
     interviewSection();
   }
