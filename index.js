@@ -146,8 +146,8 @@ mainContainer.addEventListener("click", function (e) {
       interviewList.push(jobInfo);
     }
     interviewSection();
+    countDisplay();
   }
-  countDisplay();
 });
 
 //for render of interview list
