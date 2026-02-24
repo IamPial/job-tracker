@@ -159,11 +159,13 @@ function toggleChange(id) {
   if (id == "allFilterBtn") {
     filterSectionCards.classList.add("hidden");
     allSectionCards.classList.remove("hidden");
+    //added available jobs
     availAbleJobsCount.innerText = `${allCards.length} Jobs`;
   }
   if (id == "interviewFilterBtn") {
     allSectionCards.classList.add("hidden");
     filterSectionCards.classList.remove("hidden");
+    //added available jobs
     availAbleJobsCount.innerText = `${interviewList.length} of ${allCards.length}`;
     interviewSection();
   }
@@ -171,6 +173,7 @@ function toggleChange(id) {
   if (id == "rejectFilterBtn") {
     allSectionCards.classList.add("hidden");
     filterSectionCards.classList.remove("hidden");
+    //added available jobs
     availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
     rejectSection();
   }
