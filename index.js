@@ -272,7 +272,12 @@ mainContainer.addEventListener("click", function (e) {
 
     if (currentStatus == "interviewFilterBtn") {
       availAbleJobsCount.innerText = `${interviewList.length} of ${allCards.length}`;
-
+      // added the empty-card-section for interview section
+      if (interviewList.length == "") {
+        emptyCardsSection.classList.remove("hidden");
+      } else {
+        emptyCardsSection.classList.add("hidden");
+      }
       interviewSection();
     }
     countDisplay();
