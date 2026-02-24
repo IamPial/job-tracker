@@ -19,3 +19,8 @@
 \*\*3. querySelector: By Using query selectors, we can find out how many child elements are inside a parent element using a query selector.
 
 \*\*4. querySelectorAll: By Using the querySelectorAll we can get all the sections or div elements as an array, which gives me a nodelist.
+
+### How do you create and insert a new element into the DOM?
+
+**1. I am creating a new element into the DOM with "document.createElement(new element name)"
+**2. And insert a new element into the DOM with "insert.innerHTML = new element"
