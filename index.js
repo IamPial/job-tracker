@@ -124,5 +124,11 @@ mainContainer.addEventListener("click", function (e) {
     description,
     status,
   };
-  console.log(jobInfo);
+
+  const filterInterview = interviewList.find(
+    (item) => item.companyName == jobInfo.companyName,
+  );
+  if (!filterInterview) {
+    interviewList.push(jobInfo);
+  }
 });
