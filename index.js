@@ -111,11 +111,17 @@ function toggleChange(id) {
     allSectionCards.classList.add("hidden");
     filterSectionCards.classList.remove("hidden");
   }
+
+  if (id == "rejectFilterBtn") {
+    allSectionCards.classList.add("hidden");
+    filterSectionCards.classList.remove("hidden");
+  }
 }
 
 // Executing Main Content
 
 mainContainer.addEventListener("click", function (e) {
+  // for interview section
   if (e.target.classList.contains("interview-btn")) {
     const parentNode = e.target.parentNode.parentNode;
     const companyName = parentNode.querySelector(".companyName").innerText;
@@ -145,7 +151,52 @@ mainContainer.addEventListener("click", function (e) {
     if (!filterInterview) {
       interviewList.push(jobInfo);
     }
+
+    // for interview list passing to the rejection list
+    rejectList = rejectList.filter(
+      (item) => item.companyName != jobInfo.companyName,
+    );
+
     interviewSection();
+    countDisplay();
+  }
+
+  // for rejection section
+  else if (e.target.classList.contains("reject-btn")) {
+    const parentNode = e.target.parentNode.parentNode;
+    const companyName = parentNode.querySelector(".companyName").innerText;
+    const position = parentNode.querySelector(".position").innerText;
+    const location = parentNode.querySelector(".location").innerText;
+    const type = parentNode.querySelector(".type").innerText;
+    const salary = parentNode.querySelector(".salary").innerText;
+    const description = parentNode.querySelector(".description").innerText;
+    const status = parentNode.querySelector(".my-status").innerText;
+    parentNode.querySelector(".my-status").innerText = "reject".toUpperCase();
+    parentNode.querySelector(".my-status").className =
+      "badge badge-outline badge-error bg-error/10";
+    const jobInfo = {
+      companyName,
+      position,
+      location,
+      type,
+      salary,
+      description,
+      status: "reject".toUpperCase(),
+    };
+
+    const filterInterview = rejectList.find(
+      (item) => item.companyName == jobInfo.companyName,
+    );
+    if (!filterInterview) {
+      rejectList.push(jobInfo);
+    }
+
+    // for rejection list passing to the interview list
+    interviewList = interviewList.filter(
+      (item) => item.companyName != jobInfo.companyName,
+    );
+
+    rejectSection();
     countDisplay();
   }
 });
@@ -205,7 +256,7 @@ function interviewSection() {
 }
 
 // for render of rejection List
-function rejectionSection() {
+function rejectSection() {
   filterSectionCards.innerHTML = "";
   for (const reject of rejectList) {
     let div = document.createElement("div");
