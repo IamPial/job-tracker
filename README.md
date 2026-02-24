@@ -11,3 +11,5 @@
 **5. What is the difference between preventDefault() and stopPropagation() methods?**
 
 ### What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
+
+\*\*1. getElementById() : getElementById is a unique key used to find just a single element or section or a div element.
