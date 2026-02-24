@@ -67,7 +67,7 @@ const jobs = [
   },
   {
     id: 7,
-    companyName: "StartupXYZ",
+    companyName: "Startup XYZ",
     position: "Full Stack Engineer",
     location: "Remote",
     type: "Full-time",
@@ -91,8 +91,14 @@ const jobs = [
 
 let interviewList = [];
 let rejectList = [];
-let allMyCard = [];
+let allCards = [];
+
 let currentStatus = "all";
+
+//creating a new for counting total value decrease or increase
+for (const job of jobs) {
+  allCards.push(job);
+}
 
 //finding all necessary elements
 const totalCount = document.getElementById("display-total");
@@ -102,6 +108,7 @@ const rejectCount = document.getElementById("display-reject");
 const allSectionCards = document.getElementById("allCards");
 const mainContainer = document.querySelector("main");
 const filterSectionCards = document.getElementById("filter-cards");
+const availAbleJobsCount = document.getElementById("available-jobs-count");
 
 // for toggling all necessary buttons
 const allFilterBtn = document.getElementById("allFilterBtn");
@@ -110,11 +117,22 @@ const rejectFilterBtn = document.getElementById("rejectFilterBtn");
 
 //create function for displaying counting value
 function countDisplay() {
-  totalCount.innerText = jobs.length;
+  totalCount.innerText = allCards.length;
   interviewCount.innerText = interviewList.length;
   rejectCount.innerText = rejectList.length;
 }
 countDisplay();
+
+//work with delete functionality
+function deleteFunc(id) {
+  const cardDelete = jobs.filter((item) => item.id !== id);
+  const myCard = document.getElementById(id);
+  if (myCard) {
+    myCard.remove();
+    totalCount.innerText = allCards.pop();
+  }
+  countDisplay();
+}
 
 // for toggle the click event in multiple filter button
 function toggleChange(id) {
@@ -246,6 +264,7 @@ function allInterviewSection() {
   allSectionCards.innerHTML = "";
   for (const job of jobs) {
     let div = document.createElement("div");
+    div.id = `card-${job.id}`;
     div.className = "card bg-base-300 max-w-full flex flex-row justify-between";
     div.innerHTML = `
       <div class="card-body">
@@ -285,6 +304,7 @@ function allInterviewSection() {
           </div>
           <div class="delete-icon mt-5 p-5">
             <button
+              onclick="deleteFunc('card-${job.id}')"
               class="btn h-10 w-10 btn-error bg-error/50 transition-all duration-200 active:scale-90 rounded-full"
             >
               <i class="fa-regular fa-trash-can"></i>
