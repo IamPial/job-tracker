@@ -1,65 +1,97 @@
 const jobs = [
   {
     id: 1,
-    title: "Mobile First Corp",
+    companyName: "Mobile First Corp",
     position: "React Native Developer",
     location: "Remote",
     type: "Full-time",
     salary: "$130,000 - $175,000",
     description:
       "Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.",
-    applicationStatus: {
-      applied: "Interview",
-      notApplied: "Not Applied",
-      rejected: "Rejected",
-    },
-    actionBtn: {
-      success: "interview",
-      error: "reject",
-    },
+    status: "Not Applied",
   },
   {
     id: 2,
-    title: "WebFlow Agency",
+    companyName: "WebFlow Agency",
     position: "Web Designer & Developer",
     location: "Los Angeles, CA",
     type: "Part-time",
     salary: "$80,000 - $120,000",
     description:
       "Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.",
-    applicationStatus: {
-      applied: "Interview",
-      notApplied: "Not Applied",
-      rejected: "Rejected",
-    },
-    actionBtn: {
-      success: "interview",
-      error: "reject",
-    },
+    status: "Not Applied",
   },
   {
     id: 3,
-    title: "DataViz Solutions",
+    companyName: "DataViz Solutions",
     position: "Data Visualization Specialist",
     location: "Boston, MA",
     type: "Full-time",
     salary: "$125,000 - $165,000",
     description:
       "Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.",
-    applicationStatus: {
-      applied: "Interview",
-      notApplied: "Not Applied",
-      rejected: "Rejected",
-    },
-    actionBtn: {
-      success: "interview",
-      error: "reject",
-    },
+    status: "Not Applied",
+  },
+  {
+    id: 4,
+    companyName: "CloudFirst Inc",
+    position: "Backend Developer",
+    location: "Seattle, WA",
+    type: "Full-time",
+    salary: "$140,000 - $190,000",
+    description:
+      "Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.",
+    status: "Not Applied",
+  },
+  {
+    id: 5,
+    companyName: "Innovation Labs",
+    position: "UI/UX Engineer",
+    location: "Austin, TX",
+    type: "Full-time",
+    salary: "$110,000 - $150,000",
+    description:
+      "Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.",
+    status: "Not Applied",
+  },
+  {
+    id: 6,
+    companyName: "MegaCorp Solutions",
+    position: "JavaScript Developer",
+    location: "New York, NY",
+    type: "Full-time",
+    salary: "$130,000 - $170,00",
+    description:
+      "Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.",
+    status: "Not Applied",
+  },
+  {
+    id: 7,
+    companyName: "StartupXYZ",
+    position: "Full Stack Engineer",
+    location: "Remote",
+    type: "Full-time",
+    salary: "$120,000 - $160,000",
+    description:
+      "Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.",
+    status: "Not Applied",
+  },
+  {
+    id: 8,
+    companyName: "TechCorp Industries",
+    position: "Senior Frontend Developer",
+    location: "San Francisco, CA",
+    type: "Full-time",
+    salary: "$130,000 - $175,000",
+    description:
+      "We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.",
+    status: "Not Applied",
   },
 ];
 
 let interviewList = [];
 let rejectList = [];
+let allMyCard = [];
 let currentStatus = "all";
 
 //finding all necessary elements
@@ -78,7 +110,7 @@ const rejectFilterBtn = document.getElementById("rejectFilterBtn");
 
 //create function for displaying counting value
 function countDisplay() {
-  totalCount.innerText = allSectionCards.children.length;
+  totalCount.innerText = jobs.length;
   interviewCount.innerText = interviewList.length;
   rejectCount.innerText = rejectList.length;
 }
@@ -128,7 +160,7 @@ mainContainer.addEventListener("click", function (e) {
   // for interview section
   if (e.target.classList.contains("interview-btn")) {
     const parentNode = e.target.parentNode.parentNode;
-    const companyName = parentNode.querySelector(".companyName").innerText;
+    let companyName = parentNode.querySelector(".companyName").innerText;
     const position = parentNode.querySelector(".position").innerText;
     const location = parentNode.querySelector(".location").innerText;
     const type = parentNode.querySelector(".type").innerText;
@@ -210,6 +242,60 @@ mainContainer.addEventListener("click", function (e) {
   }
 });
 
+function allInterviewSection() {
+  allSectionCards.innerHTML = "";
+  for (const job of jobs) {
+    let div = document.createElement("div");
+    div.className = "card bg-base-300 max-w-full flex flex-row justify-between";
+    div.innerHTML = `
+      <div class="card-body">
+            <h2 class="companyName card-title text-gray-800 text-2xl font-bold">
+              ${job.companyName}
+            </h2>
+            <h4 class="position text-[#64748B] text-[16px]">
+              ${job.position}
+            </h4>
+            <div class="text-[#64748B] text-[16px] space-x-3">
+              <span class="location">${job.location}</span>
+              <span class="type">${job.type}</span>
+              <span class="salary">${job.salary}</span>
+            </div>
+            <p
+              class="my-status badge badge-outline badge-primary bg-primary/10"
+            >
+              ${job.status.toUpperCase()}
+            </p>
+            <p class="description text-[#323B49] text-[16px]">
+              ${job.description}
+            </p>
+            <div class="card-actions">
+              <button
+                id="interview-btn"
+                class="interview-btn btn border-success bg-success/50"
+              >
+                INTERVIEW
+              </button>
+              <button
+                id="reject-btn"
+                class="reject-btn btn border-error bg-error/50"
+              >
+                REJECT
+              </button>
+            </div>
+          </div>
+          <div class="delete-icon mt-5 p-5">
+            <button
+              class="btn h-10 w-10 btn-error bg-error/50 transition-all duration-200 active:scale-90 rounded-full"
+            >
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+    `;
+    allSectionCards.appendChild(div);
+  }
+}
+
+allInterviewSection();
 //for render of interview list
 function interviewSection() {
   filterSectionCards.innerHTML = "";
