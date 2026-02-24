@@ -101,6 +101,16 @@ function toggleChange(id) {
   const selectedBtn = document.getElementById(id);
   selectedBtn.classList.remove("border-base-300");
   selectedBtn.classList.add("btn-info", "text-white");
+
+  // added filtering section toggle
+  if (id == "allFilterBtn") {
+    filterSectionCards.classList.add("hidden");
+    allSectionCards.classList.remove("hidden");
+  }
+  if (id == "interviewFilterBtn") {
+    allSectionCards.classList.add("hidden");
+    filterSectionCards.classList.remove("hidden");
+  }
 }
 
 // Executing Main Content
