@@ -24,3 +24,9 @@
 
 **1. I am creating a new element into the DOM with "document.createElement(new element name)"
 **2. And insert a new element into the DOM with "insert.innerHTML = new element"
+
+### What is Event Bubbling? And how does it work
+
+\*\*1 : Event Bubbling : Event bubbling is when an event is triggered on a child element, it will also be triggered on its parent element, meaning the event is triggered from the child to the parent element.
+
+\*\*2 : And It works with capture phase(parent to child) , target phase(reaching out the child) and the last part bubbling phase(child to parent)
