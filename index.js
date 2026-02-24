@@ -130,6 +130,7 @@ function deleteFunc(id) {
   if (myCard) {
     myCard.remove();
     totalCount.innerText = allCards.pop();
+    availAbleJobsCount.innerText = `${allCards.length} Jobs`;
   }
   countDisplay();
 }
@@ -158,16 +159,19 @@ function toggleChange(id) {
   if (id == "allFilterBtn") {
     filterSectionCards.classList.add("hidden");
     allSectionCards.classList.remove("hidden");
+    availAbleJobsCount.innerText = `${allCards.length} Jobs`;
   }
   if (id == "interviewFilterBtn") {
     allSectionCards.classList.add("hidden");
     filterSectionCards.classList.remove("hidden");
+    availAbleJobsCount.innerText = `${interviewList.length} of ${allCards.length}`;
     interviewSection();
   }
 
   if (id == "rejectFilterBtn") {
     allSectionCards.classList.add("hidden");
     filterSectionCards.classList.remove("hidden");
+    availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
     rejectSection();
   }
 }
@@ -212,6 +216,7 @@ mainContainer.addEventListener("click", function (e) {
     );
 
     if (currentStatus == "rejectFilterBtn") {
+      availAbleJobsCount.innerText = `${rejectList.length} of ${allCards.length}`;
       rejectSection();
     }
 
@@ -254,6 +259,7 @@ mainContainer.addEventListener("click", function (e) {
     );
 
     if (currentStatus == "interviewFilterBtn") {
+      availAbleJobsCount.innerText = `${interviewList.length} of ${allCards.length}`;
       interviewSection();
     }
     countDisplay();
