@@ -36,3 +36,9 @@
 \*\*1 : Event Delegation: Event delegation means add an event to the parent element but the event will be triggered when it reaches out the child.
 
 \*\*2: It is useful because at a time we need multiple event handler into the same parent of child, instead using of multiple handler we provide a single handler into my parent and it will handle all the child element event handler
+
+### What is the difference between preventDefault() and stopPropagation() methods?
+
+\*\*1: preventDefault() : preventDefault() method is used for prevent any type of event with its default behavior.
+
+\*\*2: stopPropagation() : stopPropagation() method is used for immediate break or close any type of events.
