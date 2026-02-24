@@ -30,3 +30,9 @@
 \*\*1 : Event Bubbling : Event bubbling is when an event is triggered on a child element, it will also be triggered on its parent element, meaning the event is triggered from the child to the parent element.
 
 \*\*2 : And It works with capture phase(parent to child) , target phase(reaching out the child) and the last part bubbling phase(child to parent)
+
+### What is Event Delegation in JavaScript? Why is it useful?
+
+\*\*1 : Event Delegation: Event delegation means add an event to the parent element but the event will be triggered when it reaches out the child.
+
+\*\*2: It is useful because at a time we need multiple event handler into the same parent of child, instead using of multiple handler we provide a single handler into my parent and it will handle all the child element event handler
