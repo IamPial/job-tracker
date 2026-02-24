@@ -247,7 +247,7 @@ mainContainer.addEventListener("click", function (e) {
   }
 
   // for rejection section
-  else if (e.target.classList.contains("reject-btn")) {
+  if (e.target.classList.contains("reject-btn")) {
     const parentNode = e.target.parentNode.parentNode;
     const companyName = parentNode.querySelector(".companyName").innerText;
     const position = parentNode.querySelector(".position").innerText;
